@@ -31,9 +31,9 @@ node-exporter用于提供*NIX内核的硬件以及系统指标，采集服务器
 - 类型是daemonset，每个node上都会部署一份
 - 使用宿主机网络，开放宿主机端口9100，可以直接通过<node_ip>:9100访问，如下：
 
-![image-20200129144239797](images/NodeExporter.png)
+![image-20200129144239797](./images/NodeExporter.png)
 
-![image-20200129144332417](images/NodeExporterMetrics.png)
+![image-20200129144332417](./images/NodeExporterMetrics.png)
 
 ### 2. 部署node-exporter service
 
@@ -112,15 +112,15 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 
 - 可以通过<Node_IP>:<Node_Port>访问Prometheus的界面：
 
-![image-20200129202707383](images/Prometheus.png)
+![image-20200129202707383](./images/Prometheus.png)
 
 - 在Alerts，可以看到根据rule定义的警报规则报出的告警信息：
 
-![image-20200129202940375](images/Alerts.png)
+![image-20200129202940375](./images/Alerts.png)
 
 - 在Status->Targets，可以看到根据配置设置的监视目标：
 
-![image-20200129203213531](images/Targets.png)
+![image-20200129203213531](./images/Targets.png)
 
 
 
