@@ -148,6 +148,8 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 
   ![Grafana](https://github.com/xingao0803/Prometheus/blob/master/images/Grafana.png)
 
+- 缺省登陆用户/密码是 admin/admin
+
 - 注意：此时还没有添加数据源
 
 ### 4. 为Grafana添加数据源，并创建Dashboard
@@ -161,4 +163,14 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
   ![Grafana+Dashboard](https://github.com/xingao0803/Prometheus/blob/master/images/Grafana+Dashboard.png)
 
 ![K8sDashboard](https://github.com/xingao0803/Prometheus/blob/master/images/K8sPodResources.png)
+
+### 5. 部署Grafana Service的Ingress
+
+`$ kubectl apply -f grafana-ingress.yml`
+
+- Ingress安装在Node节点，所以要设置/etc/hosts，Ingress里定义的Hostname指向Node节点IP
+- grafana-ingress设置端口为80， 但要查看 $kubectl get service -n ingress-nginx , 确认80端口映射到哪个NodePort
+- 可通过<HostName>:<NodePort>的方式访问Grafana
+
+
 

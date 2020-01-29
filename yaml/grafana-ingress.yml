@@ -1,11 +1,11 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: grafana
   namespace: monitoring
 spec:
   rules:
-  - host: monitor.aishangwei.net
+  - host: client.ubuntu.local
     http:
       paths:
       - path: /
