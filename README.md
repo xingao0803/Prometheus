@@ -124,7 +124,41 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 
 
 
-## 第六步：部署Graphana
+## 第六步：部署Grafana
 
+### 1. 创建Grafana Dashboard模版相关的configmap
 
+`$ kubectl apply -f grafana-net-2-dashboard-configmap.yml`
+
+可以到 https://grafana.com/grafana/dashboards 查看相关Dashboard模版的设置
+
+### 2. 部署Grafana Server的 Deployment
+
+`$ kubectl apply -f grafana-deploy.yml`
+
+- 原始docker image是grafana/grafana:4.2.0
+
+### 3. 部署Grafana Server的 Service
+
+`$ kubectl apply -f grafana-service.yml`
+
+- 类型是NodePort，由K8s自由分配，通过 `$ kubectl get service -n monitoring` 可以查到分配的端口
+
+- 可以通过<Node_IP>:<Node_Port>访问Grafana的界面：
+
+  ![Grafana](https://github.com/xingao0803/Prometheus/blob/master/images/Grafana.png)
+
+- 注意：此时还没有添加数据源
+
+### 4. 为Grafana添加数据源，并创建Dashboard
+
+`$ kubectl apply -f grafana-net-2-dashboard-batch.yml`
+
+- 注意：必须在创建Grafana Service之后再运行
+
+- 运行成功后，Grafana Server添加了数据源，并创建了Dashboard：
+
+  ![Grafana+Dashboard](https://github.com/xingao0803/Prometheus/blob/master/images/Grafana+Dashboard.png)
+
+![K8sDashboard](https://github.com/xingao0803/Prometheus/blob/master/images/K8sPodResources.png)
 

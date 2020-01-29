@@ -18,7 +18,7 @@ spec:
       initContainers:
       - name: wait-for-grafana
 #       image: giantswarm/tiny-tools
-        image: arti.local:9081/prometheus-lib-local/giantswarm/tiny-tools
+        image: arti.local:9084/prometheus-lib-local/giantswarm/tiny-tools
         args:
         - /bin/sh
         - -c
@@ -30,7 +30,8 @@ spec:
           done
       containers:
       - name: grafana-import-dashboards
-        image: giantswarm/tiny-tools
+#       image: giantswarm/tiny-tools      
+        image: arti.local:9084/prometheus-lib-local/giantswarm/tiny-tools
         command: ["/bin/sh", "-c"]
         workingDir: /opt/grafana-import-dashboards
         args:
