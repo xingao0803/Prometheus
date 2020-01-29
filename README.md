@@ -84,7 +84,7 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 
 `$ kubectl apply -f prometheus-config-configmap.yml`
 
-可以到https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config查看相关设置的定义
+可以到 https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config 查看相关设置的定义
 
 ### 3. 创建警告规则相关的configmap
 
