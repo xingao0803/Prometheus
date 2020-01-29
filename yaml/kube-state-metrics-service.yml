@@ -10,8 +10,7 @@ metadata:
 spec:
   ports:
   - name: kube-state-metrics
-#   port: 8080
-    port: 9180
+    port: 8080
     protocol: TCP
   selector:
     app: kube-state-metrics
