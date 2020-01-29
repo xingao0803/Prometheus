@@ -160,7 +160,7 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 
 - 运行成功后，Grafana Server添加了数据源，并创建了Dashboard：
 
-  ![Grafana+Dashboard](https://github.com/xingao0803/Prometheus/blob/master/images/Grafana+Dashboard.png)
+  ![Grafana+Dashboard](https://github.com/xingao0803/Prometheus/blob/master/images/GrafanaDashboard.png)
 
 ![K8sDashboard](https://github.com/xingao0803/Prometheus/blob/master/images/K8sPodResources.png)
 
