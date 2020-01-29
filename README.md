@@ -170,7 +170,5 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 
 - Ingress安装在Node节点，所以要设置/etc/hosts，Ingress里定义的Hostname指向Node节点IP
 - grafana-ingress设置端口为80， 但要查看 $kubectl get service -n ingress-nginx , 确认80端口映射到哪个NodePort
-- 可通过<HostName>:<NodePort>的方式访问Grafana
-
-
+- 可通过<Host_Name>:<Node_Port>的方式访问Grafana
 
