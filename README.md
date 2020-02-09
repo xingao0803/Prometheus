@@ -5,9 +5,7 @@
 - Kubernetes version: v1.16.3
 - 部署架构：
 
-
-
-
+![Components](https://github.com/xingao0803/Prometheus/blob/master/images/Arch.png)
 
 
 
@@ -171,4 +169,42 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 - Ingress安装在Node节点，所以要设置/etc/hosts，Ingress里定义的Hostname指向Node节点IP
 - grafana-ingress设置端口为80， 但要查看 $kubectl get service -n ingress-nginx , 确认80端口映射到哪个NodePort
 - 可通过<Host_Name>:<Node_Port>的方式访问Grafana
+
+
+
+## 第七步：部署Alertmanager
+
+### 1. 创建Alertmanager配置相关的Configmap
+
+`$ kubectl apply -f alertmanager-config-configmap.yml`
+
+- 此处设置Alertmanager告警的发送渠道，如email, slack, wechat, pagerduty等。本例只设置了email
+- Alertmanager配置的详细信息请参考https://prometheus.io/docs/alerting/configuration/
+
+### 2. 创建Alertmanager模板相关的Configmap
+
+`$ kubectl apply -f alertmanager-templates-configmap.yml`
+
+- 此处设置告警信息的各种模板
+
+### 3. 部署Alertmanager的Deployment
+
+`$ kubectl apply -f alertmanager-deploy.yml`
+
+- 原始Docker image是quay.io/prometheus/alertmanager:v0.7.1
+
+### 4. 部署Alertmanager的Service
+
+`$ kubectl apply -f alertmanager-service.yml`
+
+- 类型是NodePort，由K8s自由分配，通过 `$ kubectl get service -n monitoring` 可以查到分配的端口
+- 可以通过<Node_IP>:<Node_Port>访问Alertmanager的界面：
+
+![Alertmanager](https://github.com/xingao0803/Prometheus/blob/master/images/Alertmanager.png)
+
+       可以看到，Alertmanager接收到Prometheus里的警报，会产生对应的告警信息
+
+- 通过配置设定的渠道，Alertmanager会把告警信息按照模板定义的格式发送出去。下图为接收到的告警邮件：
+
+![Email](https://github.com/xingao0803/Prometheus/blob/master/images/email.png)
 
