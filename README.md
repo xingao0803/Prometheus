@@ -8,7 +8,6 @@
 ![Components](https://github.com/xingao0803/Prometheus/blob/master/images/Arch.png)
 
 
-
 ## 第一步：创建NameSpace："monitoring"
 
 `$ kubectl apply -f prometheus-ns.yml`
