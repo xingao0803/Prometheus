@@ -5,7 +5,7 @@
 - Kubernetes version: v1.16.3
 - 部署架构：
 
-![Components](https://github.com/xingao0803/Prometheus/blob/master/images/Arch.png)
+![Components](https://github.com/xingao0803/Prometheus/raw/master/images/Arch.png)
 
 
 ## 第一步：创建NameSpace："monitoring"
@@ -28,9 +28,9 @@ node-exporter用于提供*NIX内核的硬件以及系统指标，采集服务器
 - 类型是daemonset，每个node上都会部署一份
 - 使用宿主机网络，开放宿主机端口9100，可以直接通过<node_ip>:9100访问，如下：
 
-![NodeExporter](https://github.com/xingao0803/Prometheus/blob/master/images/NodeExporter.png)
+![NodeExporter](https://github.com/xingao0803/Prometheus/raw/master/images/NodeExporter.png)
 
-![NodeExporter-Metrics](https://github.com/xingao0803/Prometheus/blob/master/images/NodeExporterMetrics.png)
+![NodeExporter-Metrics](https://github.com/xingao0803/Prometheus/raw/master/images/NodeExporterMetrics.png)
 
 ### 2. 部署node-exporter service
 
@@ -109,15 +109,15 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 
 - 可以通过<Node_IP>:<Node_Port>访问Prometheus的界面：
 
-![Prometheus-UI](https://github.com/xingao0803/Prometheus/blob/master/images/Prometheus.png)
+![Prometheus-UI](https://github.com/xingao0803/Prometheus/raw/master/images/Prometheus.png)
 
 - 在Alerts，可以看到根据rule定义的警报规则报出的告警信息：
 
-![Prometheus-Alert](https://github.com/xingao0803/Prometheus/blob/master/images/Alerts.png)
+![Prometheus-Alert](https://github.com/xingao0803/Prometheus/raw/master/images/Alerts.png)
 
 - 在Status->Targets，可以看到根据配置设置的监视目标：
 
-![Prometheus-Targets](https://github.com/xingao0803/Prometheus/blob/master/images/Targets.png)
+![Prometheus-Targets](https://github.com/xingao0803/Prometheus/raw/master/images/Targets.png)
 
 
 
@@ -143,7 +143,7 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 
 - 可以通过<Node_IP>:<Node_Port>访问Grafana的界面：
 
-  ![Grafana](https://github.com/xingao0803/Prometheus/blob/master/images/Grafana.png)
+  ![Grafana](https://github.com/xingao0803/Prometheus/raw/master/images/Grafana.png)
 
 - 缺省登陆用户/密码是 admin/admin
 
@@ -157,9 +157,9 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 
 - 运行成功后，Grafana Server添加了数据源，并创建了Dashboard：
 
-  ![Grafana+Dashboard](https://github.com/xingao0803/Prometheus/blob/master/images/GrafanaDashboard.png)
+  ![Grafana+Dashboard](https://github.com/xingao0803/Prometheus/raw/master/images/GrafanaDashboard.png)
 
-![K8sDashboard](https://github.com/xingao0803/Prometheus/blob/master/images/K8sPodResources.png)
+![K8sDashboard](https://github.com/xingao0803/Prometheus/raw/master/images/K8sPodResources.png)
 
 ### 5. 部署Grafana Service的Ingress
 
@@ -199,11 +199,11 @@ kube-state-metrics关注于获取k8s各种资源的最新状态，如deployment�
 - 类型是NodePort，由K8s自由分配，通过 `$ kubectl get service -n monitoring` 可以查到分配的端口
 - 可以通过<Node_IP>:<Node_Port>访问Alertmanager的界面：
 
-![Alertmanager](https://github.com/xingao0803/Prometheus/blob/master/images/Alertmanager.png)
+![Alertmanager](https://github.com/xingao0803/Prometheus/raw/master/images/Alertmanager.png)
 
        可以看到，Alertmanager接收到Prometheus里的警报，会产生对应的告警信息
 
 - 通过配置设定的渠道，Alertmanager会把告警信息按照模板定义的格式发送出去。下图为接收到的告警邮件：
 
-![Email](https://github.com/xingao0803/Prometheus/blob/master/images/email.png)
+![Email](https://github.com/xingao0803/Prometheus/raw/master/images/email.png)
 
